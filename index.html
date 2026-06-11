@@ -1,42 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Arcade Multimídia</title>
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade Multimidia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="#jogos" aria-label="Arcade Multimidia">
+        <span class="brand-mark" aria-hidden="true">AM</span>
+        <span>Arcade Multimidia</span>
+      </a>
+      <p class="game-count" id="total-games">Carregando jogos...</p>
+    </div>
 
-<header>
-<h1>🎮 Arcade Multimídia</h1>
-<p>Jogos desenvolvidos pelas turmas</p>
-</header>
+    <section class="catalog-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Acervo permanente</p>
+        <h1 id="page-title">Jogos das turmas de Multimidia</h1>
+        <p>Escolha um jogo, filtre por turma e acesse direto pelo navegador.</p>
+      </div>
+    </section>
+  </header>
 
-<main class="turmas">
+  <main class="section" id="jogos">
+    <div class="toolbar" aria-label="Filtros da cartela de jogos">
+      <label class="search-field">
+        <span>Buscar</span>
+        <input id="search-input" type="search" placeholder="Nome do jogo">
+      </label>
 
-<a class="turma-card" href="turmas/t3/t3.html">
-<h2>T3</h2>
-<p>Jogos da turma T3</p>
-</a>
+      <div class="filter-group" aria-label="Filtrar por turma">
+        <button class="filter-button active" type="button" data-filter="all">Todos</button>
+        <button class="filter-button" type="button" data-filter="T3">T3</button>
+        <button class="filter-button" type="button" data-filter="T4">T4</button>
+        <button class="filter-button" type="button" data-filter="T5">T5</button>
+      </div>
+    </div>
 
-<a class="turma-card" href="turmas/t4/t4.html">
-<h2>T4</h2>
-<p>Jogos da turma T4</p>
-</a>
+    <section class="class-context" id="class-context" aria-live="polite"></section>
 
-<a class="turma-card" href="turmas/t5/t5.html">
-<h2>T5</h2>
-<p>Jogos da turma T5</p>
-</a>
+    <div class="gallery-heading">
+      <h2>Cartela de jogos</h2>
+      <p id="result-count" class="result-count">Carregando...</p>
+    </div>
 
-</main>
+    <div class="games-grid" id="games-grid"></div>
+    <p class="empty-state" id="empty-state" hidden>Nenhum jogo encontrado com esses filtros.</p>
+  </main>
 
-<footer>
-<p>Projetos desenvolvidos pelas turmas de Multimídia, na QT3 - Desenvolver</p>
-</footer>
+  <dialog class="game-dialog" id="game-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Fechar detalhes">x</button>
+    <div class="dialog-media" id="dialog-media"></div>
+    <div class="dialog-content">
+      <p class="eyebrow" id="dialog-meta"></p>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-description"></p>
+      <dl class="detail-list">
+        <div>
+          <dt>Docente(s)</dt>
+          <dd id="dialog-teachers"></dd>
+        </div>
+        <div>
+          <dt>Autores</dt>
+          <dd id="dialog-authors"></dd>
+        </div>
+        <div>
+          <dt>Engine</dt>
+          <dd id="dialog-tech"></dd>
+        </div>
+        <div>
+          <dt>Tipo</dt>
+          <dd id="dialog-type"></dd>
+        </div>
+        <div>
+          <dt>Tema gerador</dt>
+          <dd id="dialog-theme"></dd>
+        </div>
+      </dl>
+      <div class="tag-list" id="dialog-tags"></div>
+      <a class="button primary" id="dialog-play" href="#">Jogar</a>
+    </div>
+  </dialog>
 
+  <footer class="site-footer">
+    <p>Acervo de jogos desenvolvidos pelas turmas do Tecnico em Multimidia.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
-
